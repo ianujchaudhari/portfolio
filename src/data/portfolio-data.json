@@ -1,0 +1,179 @@
+{
+    "name": "Anuj Chaudhari",
+    "title": "Full Stack Developer, DevOps, and Cloud Enthusiast",
+    "about": "I'm a passionate Full Stack Developer with over 2 years of experience in MERN stack, Docker, and Cloud technologies. I graduated with a Bachelor's in Computer Engineering from Dr. D. Y. Patil Institute of Engineering. My journey in tech is driven by a constant desire to learn and innovate.",
+    "skills": [
+      { "name": "JavaScript", "category": "Frontend" },
+      { "name": "React", "category": "Frontend" },
+      { "name": "Node.js", "category": "Backend" },
+      { "name": "Express", "category": "Backend" },
+      { "name": "MongoDB", "category": "Database" },
+      { "name": "Docker", "category": "DevOps" },
+      { "name": "AWS", "category": "Cloud" },
+      { "name": "Next.js", "category": "Frontend" },
+      { "name": "TypeScript", "category": "Frontend" },
+      { "name": "GraphQL", "category": "Backend" }
+    ],
+    "experience": [
+      {
+        "title": "Full Stack Developer",
+        "company": "Aai Ekriva Solutions",
+        "date": "2022 - Present",
+        "description": "Developed a Cold Storage Inventory Application using MERN stack and implemented DevOps practices.",
+        "technologies": ["React", "Node.js", "MongoDB", "Docker"]
+      },
+      {
+        "title": "Frontend Developer",
+        "company": "E-commerce Shopper",
+        "date": "2021 - 2022",
+        "description": "Built responsive and user-friendly interfaces for an e-commerce platform.",
+        "technologies": ["React", "Redux", "CSS3", "HTML5"]
+      },
+      {
+        "title": "Full Stack Developer",
+        "company": "Dypiemr",
+        "date": "2020 - 2021",
+        "description": "Developed an LMS Portal using Next.js and implemented backend services.",
+        "technologies": ["Next.js", "Node.js", "MongoDB", "Express"]
+      }
+    ],
+    "projects": [
+      {
+        "title": "AI-Powered Task Manager",
+        "description": "A task management application with AI-driven prioritization and scheduling.",
+        "technologies": ["React", "Node.js", "TensorFlow.js", "MongoDB"],
+        "image": "/placeholder.svg?height=200&width=300",
+        "github": "https://github.com/anujchaudhari/ai-task-manager",
+        "demo": "https://ai-task-manager.vercel.app"
+      },
+      {
+        "title": "Cloud-Native Microservices Demo",
+        "description": "A demonstration of microservices architecture deployed on Kubernetes.",
+        "technologies": ["Docker", "Kubernetes", "Node.js", "React"],
+        "image": "/placeholder.svg?height=200&width=300",
+        "github": "https://github.com/anujchaudhari/cloud-native-demo",
+        "demo": "https://cloud-native-demo.vercel.app"
+      },
+      {
+        "title": "E-commerce Platform",
+        "description": "A full-featured e-commerce platform with real-time inventory management.",
+        "technologies": ["Next.js", "GraphQL", "PostgreSQL", "Redis"],
+        "image": "/placeholder.svg?height=200&width=300",
+        "github": "https://github.com/anujchaudhari/ecommerce-platform",
+        "demo": "https://ecommerce-platform.vercel.app"
+      },
+      {
+        "title": "IoT Home Automation",
+        "description": "An IoT-based home automation system with voice control and energy monitoring.",
+        "technologies": ["Raspberry Pi", "Python", "MQTT", "React Native"],
+        "image": "/placeholder.svg?height=200&width=300",
+        "github": "https://github.com/anujchaudhari/iot-home-automation",
+        "demo": "https://iot-home-demo.vercel.app"
+      },
+      {
+        "title": "Blockchain Voting System",
+        "description": "A secure and transparent voting system built on blockchain technology.",
+        "technologies": ["Ethereum", "Solidity", "Web3.js", "React"],
+        "image": "/placeholder.svg?height=200&width=300",
+        "github": "https://github.com/anujchaudhari/blockchain-voting",
+        "demo": "https://blockchain-voting-demo.vercel.app"
+      },
+      {
+        "title": "AR Navigation App",
+        "description": "An augmented reality navigation app for indoor and outdoor use.",
+        "technologies": ["ARKit", "Swift", "CoreLocation", "MapKit"],
+        "image": "/placeholder.svg?height=200&width=300",
+        "github": "https://github.com/anujchaudhari/ar-navigation",
+        "demo": "https://ar-navigation-demo.vercel.app"
+      }
+    ],
+    "certifications": [
+      {
+        "title": "AWS Certified Solutions Architect",
+        "provider": "Amazon Web Services",
+        "date": "2023",
+        "link": "https://www.credly.com/badges/aws-certified-solutions-architect"
+      },
+      {
+        "title": "Docker Certified Associate",
+        "provider": "Docker",
+        "date": "2022",
+        "link": "https://www.docker.com/certified-associate"
+      },
+      {
+        "title": "Google Cloud Professional Data Engineer",
+        "provider": "Google Cloud",
+        "date": "2023",
+        "link": "https://www.credential.net/google-cloud-professional-data-engineer"
+      },
+      {
+        "title": "Microsoft Certified: Azure Solutions Architect Expert",
+        "provider": "Microsoft",
+        "date": "2022",
+        "link": "https://www.microsoft.com/en-us/learning/azure-solutions-architect.aspx"
+      },
+      {
+        "title": "Certified Kubernetes Administrator (CKA)",
+        "provider": "Cloud Native Computing Foundation",
+        "date": "2023",
+        "link": "https://www.cncf.io/certification/cka/"
+      },
+      {
+        "title": "Certified Information Systems Security Professional (CISSP)",
+        "provider": "ISC²",
+        "date": "2022",
+        "link": "https://www.isc2.org/Certifications/CISSP"
+      }
+    ],
+    "blogs": [
+      {
+        "title": "Mastering Microservices with Docker and Kubernetes",
+        "excerpt": "Learn how to build and deploy scalable microservices using Docker and Kubernetes.",
+        "date": "2023-05-15",
+        "link": "https://anujchaudhari.dev/blog/mastering-microservices",
+        "image": "/placeholder.svg?height=300&width=400"
+      },
+      {
+        "title": "The Future of Web Development: Next.js and Server Components",
+        "excerpt": "Explore the revolutionary features of Next.js and how Server Components are changing the game.",
+        "date": "2023-04-02",
+        "link": "https://anujchaudhari.dev/blog/nextjs-server-components"
+      },
+      {
+        "title": "Implementing CI/CD Pipelines with GitHub Actions",
+        "excerpt": "A step-by-step guide to setting up efficient CI/CD pipelines using GitHub Actions.",
+        "date": "2023-06-10",
+        "link": "https://anujchaudhari.dev/blog/github-actions-cicd"
+      },
+      {
+        "title": "Machine Learning in Production: Best Practices",
+        "excerpt": "Learn how to effectively deploy and maintain machine learning models in production environments.",
+        "date": "2023-07-05",
+        "link": "https://anujchaudhari.dev/blog/ml-in-production"
+      },
+      {
+        "title": "Securing Your React Applications: A Comprehensive Guide",
+        "excerpt": "Discover essential techniques to protect your React applications from common security vulnerabilities.",
+        "date": "2023-08-20",
+        "link": "https://anujchaudhari.dev/blog/react-security-guide"
+      },
+      {
+        "title": "Optimizing Database Performance in High-Load Applications",
+        "excerpt": "Explore strategies and techniques to improve database performance in high-traffic applications.",
+        "date": "2023-09-12",
+        "link": "https://anujchaudhari.dev/blog/database-optimization"
+      }
+    ],
+    "social": {
+      "github": "https://github.com/anujchaudhari",
+      "linkedin": "https://linkedin.com/in/anujchaudhari",
+      "leetcode": "https://leetcode.com/anujchaudhari",
+      "geeksforgeeks": "https://auth.geeksforgeeks.org/user/anujchaudhari",
+      "email": "anuj@example.com",
+      "discord": "anuj@example.com",
+      "twitter": "anuj@example.com"
+    },
+    "cvLink": "/anuj-chaudhari-cv.pdf"
+  }
+  
+  
