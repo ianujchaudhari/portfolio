@@ -154,7 +154,7 @@ const Hero = () => {
           transition={{ duration: 0.9, delay: 0.9 }}
         >
           <Image
-            src={generalInfo.avatar}
+            src={"/avatar.JPG"}
             alt="Anuj Chaudhari"
             width={200}
             height={200}

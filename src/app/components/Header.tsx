@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTheme } from "../../contexts/ThemeProvider";
-import useGeneralInfo from "../../hooks/useGeneralInfo";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,12 +18,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const { loading, generalInfo } = useGeneralInfo();
-
-  if (loading) {
-    return <p></p>;
-  }
-
   return (
     <motion.header
       className={`fixed top-0 left-0 w-screen z-50 transition-all overflow-x-hidden duration-300 ${
@@ -36,7 +29,7 @@ const Header = () => {
     >
       <nav className=" mx-auto md:px-6 py-4 flex max-w-full  justify-around md:justify-between items-center">
         <Link href="/" className="flex items-center">
-          <Image src={generalInfo!.logo} alt="Logo" width={40} height={40} />
+          <Image src="/Logo.svg" alt="Logo" width={40} height={40} />
           <span className="ml-2 text-xl font-semibold text-[#333333] dark:text-white text-nowrap">
             Anuj Chaudhari
           </span>
