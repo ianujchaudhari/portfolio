@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import Section, { SectionTitle } from "./shared/Section";
 import Card from "./shared/Card";
-import data from "../../data/portfolio-data.json";
 import { staggerChildren } from "../utils/animations";
 import type { Swiper as SwiperType } from "swiper";
 
@@ -14,15 +13,41 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+type Certification = {
+  _id: string;
+  name: string;
+  issuer: string;
+  date: string;
+  thumbnail: string;
+  credentialURL: string;
+};
+
 const Certifications = () => {
-  const [swiper, setSwiper] = useState(null);
-  const itemsPerRow = 3;
-  const rowsToShow = 2;
-  const totalItemsToShow = itemsPerRow * rowsToShow;
-  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+  const [certifications, setCertifications] = useState<Certification[]>([]); // Store fetched certifications
+  const [, setSwiperInstance] = useState<SwiperType | null>(null);
+
+  useEffect(() => {
+    const fetchCertifications = async () => {
+      try {
+        const response = await fetch("/api/certifications");
+        if (!response.ok) {
+          throw new Error("Failed to fetch certifications");
+        }
+        const data: Certification[] = await response.json();
+        setCertifications(data);
+      } catch (error) {
+        console.error("Error fetching certifications:", error);
+      }
+    };
+
+    fetchCertifications();
+  }, []);
 
   return (
-    <Section id="certifications" className="bg-transparent dark:bg-transparent py-32">
+    <Section
+      id="certifications"
+      className="bg-transparent dark:bg-transparent py-32"
+    >
       <SectionTitle>Certifications</SectionTitle>
       <motion.div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24"
@@ -46,13 +71,15 @@ const Certifications = () => {
             },
           }}
         >
-          {data.certifications.map((cert, index) => (
-            <SwiperSlide key={index}>
+          {certifications.map((cert) => (
+            <SwiperSlide key={cert._id}>
               <Card
-                title={cert.title}
-                description={cert.provider}
-                image="/placeholder.svg?height=300&width=400"
-                link={cert.link}
+                title={cert.name}
+                description={cert.issuer}
+                image={
+                  cert.thumbnail || "/placeholder.svg?height=300&width=400"
+                }
+                link={cert.thumbnail}
                 date={cert.date}
               />
             </SwiperSlide>

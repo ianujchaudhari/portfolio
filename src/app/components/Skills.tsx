@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Section, { SectionTitle } from "./shared/Section";
-import data from "../../data/portfolio-data.json";
 import { fadeInUp, staggerChildren } from "../utils/animations";
 import {
   Code,
@@ -11,44 +10,40 @@ import {
   Database,
   Cloud,
   Layers,
-  GitBranch,
-  Monitor,
-  Cpu,
-  Globe,
+  Brain,
+  Layout,
   Terminal,
 } from "lucide-react";
 
-// Define a type for the skill icons mapping
-type SkillIcons = {
+type CategoryIcons = {
   [key: string]: React.ComponentType<{ className?: string }>;
 };
 
 // Define a type for skill data
 type Skill = {
+  _id: string;
   name: string;
   category: string;
 };
 
-const skillIcons: SkillIcons = {
-  JavaScript: Code,
-  React: Layers,
-  "Node.js": Server,
-  Express: Server,
-  MongoDB: Database,
-  Docker: Cloud,
-  AWS: Cloud,
-  "Next.js": Globe,
-  TypeScript: Code,
-  GraphQL: Database,
+const categoryIcons: CategoryIcons = {
+  Frontend: Layout,
+  Backend: Server,
+  Database: Database,
+  DevOps: Layers,
+  General: Code,
+  Cloud: Cloud,
+  AI: Brain,
 };
 
 // Define props type for SkillBadge
 type SkillBadgeProps = {
   name: string;
+  category: string;
 };
 
-const SkillBadge = ({ name }: SkillBadgeProps) => {
-  const Icon = skillIcons[name] || Terminal;
+const SkillBadge = ({ name, category }: SkillBadgeProps) => {
+  const Icon = categoryIcons[category] || Terminal;
   return (
     <motion.div
       className="skill-badge glowing-border w-36 md:w-48 p-4 text-gray-600 hover:text-white"
@@ -64,19 +59,43 @@ const SkillBadge = ({ name }: SkillBadgeProps) => {
 
 const Skills = () => {
   const [filter, setFilter] = useState<string>("All");
+  const [skills, setSkills] = useState<Skill[]>([]); // Store fetched skills
+  const [categories, setCategories] = useState<string[]>(["All"]);
 
-  const categories = [
-    "All",
-    ...new Set(data.skills.map((skill: Skill) => skill.category)),
-  ];
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const response = await fetch("/api/skills");
+        if (!response.ok) {
+          throw new Error("Failed to fetch skills");
+        }
+        const data: Skill[] = await response.json();
+        setSkills(data);
+
+        // Extract unique categories and set them
+        const uniqueCategories = [
+          "All",
+          ...new Set(data.map((skill: Skill) => skill.category)),
+        ];
+        setCategories(uniqueCategories);
+      } catch (error) {
+        console.error("Error fetching skills:", error);
+      }
+    };
+
+    fetchSkills();
+  }, []);
 
   const filteredSkills =
     filter === "All"
-      ? data.skills
-      : data.skills.filter((skill: Skill) => skill.category === filter);
+      ? skills
+      : skills.filter((skill: Skill) => skill.category === filter);
 
   return (
-    <Section id="skills" className="bg-transparent dark:bg-transparent py-32 min-h-fit">
+    <Section
+      id="skills"
+      className="bg-transparent dark:bg-transparent py-32 min-h-fit"
+    >
       <SectionTitle>My Skills</SectionTitle>
       <motion.div
         className="mb-8 flex justify-center"
@@ -108,8 +127,13 @@ const Skills = () => {
         initial="initial"
         animate="animate"
       >
-        {filteredSkills.map((skill: Skill, index: number) => (
-          <SkillBadge key={index} name={skill.name} />
+        {
+        filteredSkills.map((skill: Skill) => (
+          <SkillBadge
+            key={skill._id}
+            name={skill.name}
+            category={skill.category}
+          />
         ))}
       </motion.div>
     </Section>

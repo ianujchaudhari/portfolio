@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useTheme } from "./ThemeProvider";
+import { useTheme } from "../../contexts/ThemeProvider";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,24 +35,60 @@ const Header = () => {
           </span>
         </Link>
         <div className="flex items-center space-x-6">
-          <div className="tabs bg-transparent shadow-none dark:text-white hidden">
+          <div className="tabs bg-transparent shadow-none dark:text-white">
             <input type="radio" id="radio-about" name="tabs" defaultChecked />
-            <label className="tab w-20" htmlFor="radio-about">
+            <label
+              className="tab w-20"
+              htmlFor="radio-about"
+              onClick={() => {
+                const section = document.getElementById("about");
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
               About
             </label>
             <input type="radio" id="radio-skills" name="tabs" />
-            <label className="tab w-20" htmlFor="radio-skills">
+            <label
+              className="tab w-20"
+              htmlFor="radio-skills"
+              onClick={() => {
+                const section = document.getElementById("skills");
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
               Skills
             </label>
             <input type="radio" id="radio-projects" name="tabs" />
-            <label className="tab w-20" htmlFor="radio-projects">
+            <label
+              className="tab w-20"
+              htmlFor="radio-projects"
+              onClick={() => {
+                const section = document.getElementById("projects");
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
               Projects
             </label>
             <input type="radio" id="radio-blogs" name="tabs" />
-            <label className="tab w-20" htmlFor="radio-blogs">
+            <label
+              className="tab w-20"
+              htmlFor="radio-blogs"
+              onClick={() => {
+                const section = document.getElementById("blogs");
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
               Blogs
             </label>
-            <span className="glider w-20"></span>
+            <span className="glider"></span>
           </div>
 
           <label className="switch scale-75">

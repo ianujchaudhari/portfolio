@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "es2015",
+    "jsx": "preserve", // Use the correct JSX factory for React 17+
+    "types": ["@types/react", "@types/node"], // Include React types
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -11,7 +13,6 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
     "incremental": true,
     "plugins": [
       {

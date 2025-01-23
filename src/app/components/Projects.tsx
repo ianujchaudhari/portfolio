@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import Section, { SectionTitle } from "./shared/Section";
 import Card from "./shared/Card";
-import data from "../../data/portfolio-data.json";
 import { staggerChildren } from "../utils/animations";
 
 import "swiper/css";
@@ -14,12 +13,36 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import type { Swiper as SwiperType } from "swiper"; // Import the Swiper type
 
+type Project = {
+  _id: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  thumbnail: string;
+  github: string;
+  demo: string;
+};
+
 const Projects = () => {
-  const [swiper, setSwiper] = useState(null);
-  const itemsPerRow = 3;
-  const rowsToShow = 2;
-  const totalItemsToShow = itemsPerRow * rowsToShow;
-  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+  const [projects, setProjects] = useState<Project[]>([]); // Store fetched projects
+  const [ , setSwiperInstance] = useState<SwiperType | null>(null);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch("/api/projects");
+        if (!response.ok) {
+          throw new Error("Failed to fetch projects");
+        }
+        const data: Project[] = await response.json();
+        setProjects(data);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   return (
     <Section id="projects" className="bg-transparent dark:bg-transparent py-32">
@@ -46,12 +69,12 @@ const Projects = () => {
             },
           }}
         >
-          {data.projects.map((project, index) => (
-            <SwiperSlide key={index}>
+          {projects.map((project) => (
+            <SwiperSlide key={project._id}>
               <Card
                 title={project.title}
                 description={project.description}
-                image={project.image}
+                image={project.thumbnail}
                 link={project.demo || project.github}
               />
             </SwiperSlide>

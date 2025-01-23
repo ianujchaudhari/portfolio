@@ -5,8 +5,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaArrowDown } from "react-icons/fa";
 import Section from "./shared/Section";
-import data from "../../data/portfolio-data.json";
 import { fadeInUp } from "../utils/animations";
+import useGeneralInfo from "../../hooks/useGeneralInfo";
+import Loader from "../components/Loader";
 
 // Define types for positions
 type Position = { x: number; y: number };
@@ -59,6 +60,9 @@ const quotes = [
 
 const Hero = () => {
   // Define type for floating quotes
+
+  const { generalInfo, loading } = useGeneralInfo();
+
   type FloatingQuote = {
     quote: string;
     fontSize: number;
@@ -107,12 +111,19 @@ const Hero = () => {
     setFloatingQuotes(quoteSettings);
   }, []);
 
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (!generalInfo) {
+    return <div>Error loading data</div>;
+  }
+
   return (
     <Section
       id="hero"
       className="relative overflow-hidden animated-bg text-white"
     >
-
       {/* Floating Quotes */}
       {floatingQuotes.map((item, index) => (
         <motion.div
@@ -155,11 +166,12 @@ const Hero = () => {
           className="mb-8 text-5xl font-bold text-shadow-strong"
           {...fadeInUp}
         >
-          Hi, I&apos;m <span className="gradient-text text-nowrap">{data.name}</span>
+          Hi, I&apos;m{" "}
+          <span className="gradient-text text-nowrap">{generalInfo.name}</span>
         </motion.h1>
 
         <motion.p className="mb-12 text-2xl text-shadow-strong" {...fadeInUp}>
-          {data.title}
+          {generalInfo.title}
         </motion.p>
 
         <motion.div
@@ -173,9 +185,10 @@ const Hero = () => {
             View My Work
           </a>
           <a
-            href={data.cvLink}
+            href={generalInfo.resumeURL}
             className="glowing-border border-2 border-white bg-transparent px-8 py-3 rounded-full text-base font-semibold text-white hover:bg-white  transition-colors hover-lift"
             download
+            target="_blank"
           >
             Download CV
           </a>

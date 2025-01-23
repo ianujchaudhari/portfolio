@@ -306,6 +306,10 @@ textarea {
   @apply w-full px-3 py-2 text-gray-700  rounded-lg focus:outline-none;
 }
 
+.search input[type="text"]{
+  @apply px-10 w-full ;
+}
+
 .dark input[type="text"],
 .dark input[type="email"],
 .dark textarea {
@@ -661,4 +665,10 @@ footer.glass-effect {
 #blogs{
   justify-content: start;
   min-height: fit-content;
+}
+
+.loader {
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 50%;
 }
