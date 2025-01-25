@@ -6,6 +6,8 @@ export interface GeneralInfo {
   title: string;
   about: string;
   resumeURL: string;
+  logo: string;
+  avatar: string;
 }
 
 const useGeneralInfo = () => {
